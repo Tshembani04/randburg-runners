@@ -1,23 +1,3 @@
-// const mongoose = require("mongoose");
-
-// const ProductSchema = new mongoose.Schema(
-//   {
-//     image: String,
-//     title: String,
-//     description: String,
-//     category: String,
-//     brand: String,
-//     price: Number,
-//     salePrice: Number,
-//     totalStock: Number,
-//     averageReview: Number,
-//   },
-//   { timestamps: true }
-// );
-
-// module.exports = mongoose.model("Product", ProductSchema);
-
-
 const mongoose = require("mongoose");
 
 const VariantSchema = new mongoose.Schema(
@@ -35,7 +15,7 @@ const VariantSchema = new mongoose.Schema(
       default: 0,
     },
   },
-  { _id: false }
+  { _id: false },
 );
 
 const ProductSchema = new mongoose.Schema(
@@ -96,7 +76,7 @@ const ProductSchema = new mongoose.Schema(
       max: 5,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 module.exports = mongoose.model("Product", ProductSchema);
