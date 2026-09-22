@@ -1,11 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// Define the initial state for the admin products slice
 const initialState = {
   isLoading: false,
   productList: [],
 };
 
+// Define asynchronous thunk actions for adding, fetching, editing, and deleting products
 export const addNewProduct = createAsyncThunk(
   "/products/addnewproduct",
   async (formData) => {
@@ -16,24 +18,26 @@ export const addNewProduct = createAsyncThunk(
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
     return result?.data;
-  }
+  },
 );
 
+// Define an asynchronous thunk action for fetching all products
 export const fetchAllProducts = createAsyncThunk(
   "/products/fetchAllProducts",
   async () => {
     const result = await axios.get(
-      "http://localhost:5000/api/admin/products/get"
+      "http://localhost:5000/api/admin/products/get",
     );
 
     return result?.data;
-  }
+  },
 );
 
+// Define an asynchronous thunk action for editing a product
 export const editProduct = createAsyncThunk(
   "/products/editProduct",
   async ({ id, formData }) => {
@@ -44,24 +48,26 @@ export const editProduct = createAsyncThunk(
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
     return result?.data;
-  }
+  },
 );
 
+// Define an asynchronous thunk action for deleting a product
 export const deleteProduct = createAsyncThunk(
   "/products/deleteProduct",
   async (id) => {
     const result = await axios.delete(
-      `http://localhost:5000/api/admin/products/delete/${id}`
+      `http://localhost:5000/api/admin/products/delete/${id}`,
     );
 
     return result?.data;
-  }
+  },
 );
 
+// Create a slice for admin products with reducers and extra reducers to handle the asynchronous actions
 const AdminProductsSlice = createSlice({
   name: "adminProducts",
   initialState,

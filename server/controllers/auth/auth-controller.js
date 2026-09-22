@@ -2,16 +2,19 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../../models/User");
 
-//register
+// register user
 const registerUser = async (req, res) => {
+  // Extract user registration data from the request body
+
   const { userName, email, password } = req.body;
 
+  // Check if a user with the same email already exists in the database
   try {
     const checkUser = await User.findOne({ email });
     if (checkUser)
       return res.json({
         success: false,
-        message: "User Already exists with the same email! Please try again",
+        message: "User already exists with the same email! Please try again",
       });
 
     const hashPassword = await bcrypt.hash(password, 12);
@@ -35,7 +38,7 @@ const registerUser = async (req, res) => {
   }
 };
 
-//login
+//login user
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
@@ -49,7 +52,7 @@ const loginUser = async (req, res) => {
 
     const checkPasswordMatch = await bcrypt.compare(
       password,
-      checkUser.password
+      checkUser.password,
     );
     if (!checkPasswordMatch)
       return res.json({
@@ -65,7 +68,7 @@ const loginUser = async (req, res) => {
         userName: checkUser.userName,
       },
       "CLIENT_SECRET_KEY",
-      { expiresIn: "60m" }
+      { expiresIn: "60m" },
     );
 
     res.cookie("token", token, { httpOnly: true, secure: false }).json({

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
+// Initial state for the registration form data
 const initialState = {
   userName: "",
   email: "",
@@ -18,6 +19,10 @@ function AuthRegister() {
   const navigate = useNavigate();
   const { toast } = useToast();
 
+  // log the form data to the console whenever it changes
+  console.log(formData, "formData");
+
+  // Handles the form submission for user registration
   function onSubmit(event) {
     event.preventDefault();
     dispatch(registerUser(formData)).then((data) => {

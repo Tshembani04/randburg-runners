@@ -44,6 +44,7 @@ function AdminProducts() {
   const dispatch = useDispatch();
   const { toast } = useToast();
 
+  // Handle form submission for adding or editing a product
   function onSubmit(event) {
     event.preventDefault();
 
@@ -81,6 +82,7 @@ function AdminProducts() {
         });
   }
 
+  // Handle product deletion
   function handleDelete(getCurrentProductId) {
     dispatch(deleteProduct(getCurrentProductId)).then((data) => {
       if (data?.payload?.success) {
@@ -89,6 +91,7 @@ function AdminProducts() {
     });
   }
 
+  // Validate the form data to ensure all required fields are filled
   function isFormValid() {
     return Object.keys(formData)
       .filter((currentKey) => currentKey !== "averageReview")
@@ -96,6 +99,7 @@ function AdminProducts() {
       .every((item) => item);
   }
 
+  // Fetch all products when the component mounts
   useEffect(() => {
     dispatch(fetchAllProducts());
   }, [dispatch]);

@@ -6,6 +6,7 @@ function CheckAuth({ isAuthenticated, user, children }) {
   console.log(location.pathname, isAuthenticated);
 
   if (location.pathname === "/") {
+    // if user is not authenticated, redirect to login page and if user is authenticated, redirect to dashboard or home page based on role
     if (!isAuthenticated) {
       return <Navigate to="/auth/login" />;
     } else {
@@ -17,6 +18,7 @@ function CheckAuth({ isAuthenticated, user, children }) {
     }
   }
 
+  // if user is not authenticated and trying to access any page other than login or register, redirect to login page
   if (
     !isAuthenticated &&
     !(
@@ -27,6 +29,7 @@ function CheckAuth({ isAuthenticated, user, children }) {
     return <Navigate to="/auth/login" />;
   }
 
+  // if user is authenticated and trying to access login or register pages, redirect to appropriate dashboard
   if (
     isAuthenticated &&
     (location.pathname.includes("/login") ||
@@ -39,6 +42,7 @@ function CheckAuth({ isAuthenticated, user, children }) {
     }
   }
 
+  // if user is authenticated and trying to access admin pages but is not an admin, redirect to unauth page
   if (
     isAuthenticated &&
     user?.role !== "admin" &&
@@ -47,6 +51,7 @@ function CheckAuth({ isAuthenticated, user, children }) {
     return <Navigate to="/unauth-page" />;
   }
 
+  // if user is authenticated and trying to access shop pages but is an admin, redirect to admin dashboard
   if (
     isAuthenticated &&
     user?.role === "admin" &&

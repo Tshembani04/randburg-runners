@@ -1,3 +1,6 @@
+// This file contains configuration for form controls, menu items, and other constants used in the application.
+
+// Form control configurations for registration form
 export const registerFormControls = [
   {
     name: "userName",
@@ -22,6 +25,7 @@ export const registerFormControls = [
   },
 ];
 
+// Form control configurations for login form
 export const loginFormControls = [
   {
     name: "email",
@@ -39,6 +43,7 @@ export const loginFormControls = [
   },
 ];
 
+// Form control configurations for add product form
 export const addProductFormElements = [
   {
     label: "Title",
@@ -60,8 +65,8 @@ export const addProductFormElements = [
     options: [
       { id: "men", label: "Men" },
       { id: "women", label: "Women" },
-      { id: "kids", label: "Kids" },
-      { id: "accessories", label: "Accessories" },
+      // { id: "kids", label: "Kids" },
+      // { id: "accessories", label: "Accessories" },
       { id: "footwear", label: "Footwear" },
     ],
   },
@@ -70,7 +75,7 @@ export const addProductFormElements = [
     name: "brand",
     componentType: "select",
     options: [
-      { id: "nike", label: "Nike" },
+      { id: "asics", label: "Asics" },
       { id: "adidas", label: "Adidas" },
       { id: "puma", label: "Puma" },
       { id: "levi", label: "Levi's" },
@@ -101,6 +106,7 @@ export const addProductFormElements = [
   },
 ];
 
+// Menu items for the shopping view header
 export const shoppingViewHeaderMenuItems = [
   {
     id: "home",
@@ -122,21 +128,21 @@ export const shoppingViewHeaderMenuItems = [
     label: "Women",
     path: "/shop/listing",
   },
-  {
-    id: "kids",
-    label: "Kids",
-    path: "/shop/listing",
-  },
+  // {
+  //   id: "kids",
+  //   label: "Kids",
+  //   path: "/shop/listing",
+  // },
   {
     id: "footwear",
     label: "Footwear",
     path: "/shop/listing",
   },
-  {
-    id: "accessories",
-    label: "Accessories",
-    path: "/shop/listing",
-  },
+  // {
+  //   id: "accessories",
+  //   label: "Accessories",
+  //   path: "/shop/listing",
+  // },
   {
     id: "search",
     label: "Search",
@@ -144,14 +150,16 @@ export const shoppingViewHeaderMenuItems = [
   },
 ];
 
+// Mapping of category and brand options for easy reference
 export const categoryOptionsMap = {
   men: "Men",
   women: "Women",
-  kids: "Kids",
-  accessories: "Accessories",
+  // kids: "Kids",
+  // accessories: "Accessories",
   footwear: "Footwear",
 };
 
+// Mapping of brand options for easy reference
 export const brandOptionsMap = {
   nike: "Nike",
   adidas: "Adidas",
@@ -161,16 +169,17 @@ export const brandOptionsMap = {
   "h&m": "H&M",
 };
 
+// Filter and sort options for product listing
 export const filterOptions = {
   category: [
     { id: "men", label: "Men" },
     { id: "women", label: "Women" },
-    { id: "kids", label: "Kids" },
-    { id: "accessories", label: "Accessories" },
+    // { id: "kids", label: "Kids" },
+    // { id: "accessories", label: "Accessories" },
     { id: "footwear", label: "Footwear" },
   ],
   brand: [
-    { id: "nike", label: "Nike" },
+    { id: "asics", label: "Asics" },
     { id: "adidas", label: "Adidas" },
     { id: "puma", label: "Puma" },
     { id: "levi", label: "Levi's" },
@@ -179,6 +188,7 @@ export const filterOptions = {
   ],
 };
 
+// Sort options for product listing
 export const sortOptions = [
   { id: "price-lowtohigh", label: "Price: Low to High" },
   { id: "price-hightolow", label: "Price: High to Low" },
@@ -186,6 +196,7 @@ export const sortOptions = [
   { id: "title-ztoa", label: "Title: Z to A" },
 ];
 
+// Form control configurations for address form
 export const addressFormControls = [
   {
     label: "Address",

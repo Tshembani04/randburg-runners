@@ -1,12 +1,16 @@
 const { imageUploadUtil } = require("../../helpers/cloudinary");
 const Product = require("../../models/Product");
 
+// Handle image upload
 const handleImageUpload = async (req, res) => {
   try {
+    // Convert the uploaded file buffer to a base64 string
     const b64 = Buffer.from(req.file.buffer).toString("base64");
+    // Create a data URL for the image
     const url = "data:" + req.file.mimetype + ";base64," + b64;
     const result = await imageUploadUtil(url);
 
+    // Send the result back to the client
     res.json({
       success: true,
       result,
@@ -22,6 +26,7 @@ const handleImageUpload = async (req, res) => {
 
 //add a new product
 const addProduct = async (req, res) => {
+  // Extract product details from the request body
   try {
     const {
       image,
@@ -37,6 +42,7 @@ const addProduct = async (req, res) => {
 
     console.log(averageReview, "averageReview");
 
+    // Create a new product instance with the provided details
     const newlyCreatedProduct = new Product({
       image,
       title,

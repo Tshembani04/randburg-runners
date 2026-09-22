@@ -10,6 +10,7 @@ import {
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 
+// CommonForm component is a reusable form component that takes in form controls, form data, and other props to render a form with various input types (input, select, textarea) and a submit button. It handles the state of the form data and updates it based on user input.
 function CommonForm({
   formControls,
   formData,
@@ -18,11 +19,16 @@ function CommonForm({
   buttonText,
   isBtnDisabled,
 }) {
+  // Renders the appropriate input element based on the componentType of the form control
   function renderInputsByComponentType(getControlItem) {
     let element = null;
+
+    // Get the current value of the form control from formData, defaulting to an empty string if not present
     const value = formData[getControlItem.name] || "";
 
+    // Switch statement to determine which input component to render based on the componentType of the form control
     switch (getControlItem.componentType) {
+      // Render an input element for componentType "input"
       case "input":
         element = (
           <Input
@@ -41,8 +47,11 @@ function CommonForm({
         );
 
         break;
+
+      // Render a select element for componentType "select"
       case "select":
         element = (
+          // Render a select element for componentType "select"
           <Select
             onValueChange={(value) =>
               setFormData({
@@ -66,8 +75,8 @@ function CommonForm({
             </SelectContent>
           </Select>
         );
-
         break;
+      // Render a textarea element for componentType "textarea"
       case "textarea":
         element = (
           <Textarea
@@ -86,6 +95,7 @@ function CommonForm({
 
         break;
 
+      // Render a default input element for any other componentType
       default:
         element = (
           <Input

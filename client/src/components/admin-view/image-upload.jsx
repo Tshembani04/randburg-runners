@@ -6,6 +6,8 @@ import { Button } from "../ui/button";
 import axios from "axios";
 import { Skeleton } from "../ui/skeleton";
 
+
+// This component is used for uploading product images in the admin view. It allows users to drag and drop or click to upload an image file. The uploaded image is then sent to the server for processing and storage. The component also handles loading states and provides feedback to the user during the upload process.
 function ProductImageUpload({
   imageFile,
   setImageFile,
@@ -29,11 +31,14 @@ function ProductImageUpload({
   }
 
   function handleDragOver(event) {
+    // Prevent the default behavior to allow dropping
     event.preventDefault();
   }
 
   function handleDrop(event) {
+    // Prevent the default behavior to allow dropping
     event.preventDefault();
+    // Get the dropped file from the event and set it as the image file
     const droppedFile = event.dataTransfer.files?.[0];
     if (droppedFile) setImageFile(droppedFile);
   }
@@ -44,6 +49,8 @@ function ProductImageUpload({
       inputRef.current.value = "";
     }
   }
+
+  console.log(imageFile)
 
   async function uploadImageToCloudinary() {
     setImageLoadingState(true);

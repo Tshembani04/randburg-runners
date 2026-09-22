@@ -102,6 +102,7 @@ const authSlice = createSlice({
         console.log(action);
 
         state.isLoading = false;
+        // Set the user data and authentication status based on the response
         state.user = action.payload.success ? action.payload.user : null;
         state.isAuthenticated = action.payload.success;
       })
