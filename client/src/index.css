@@ -67,3 +67,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Slick scrollbar */
+.slick-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted-foreground) / 0.35) transparent;
+}
+
+.slick-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.slick-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.slick-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.35);
+  border-radius: 9999px;
+}
+
+.slick-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.6);
+}
